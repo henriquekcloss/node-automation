@@ -21,14 +21,18 @@ export default {
                 return res.status(400).json(err)
             }
 
+            if (err.name === 'MongoError') {
+                return res.status(409).json(err)
+            }
+
             return res.status(500).json(err)
         })
     },
     list: (req, res) => {
         let query = {}
 
-        if (req.query.name) {
-            query.name = new RegExp(req.query.name, 'i')
+        if (req.query.title) {
+            query.title = new RegExp(req.query.title, 'i')
         }
 
         Task.find(query, {}, { sort: '-date' }, (err, result) => {

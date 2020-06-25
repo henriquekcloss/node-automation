@@ -5,7 +5,10 @@
   "main": "app.js",
   "scripts": {
     "start": "babel-node app.js",
-    "dev": "nodemon --exec babel-node app.js"
+    "dev": "nodemon --exec babel-node app.js",
+    "test": "npm run dropdb_windows & mocha test --require babel-register --exit",
+    "dropdb_windows": "scripts\\dropdb.bat",
+    "dropdb_unix": "./scripts/dropdb.sh"
   },
   "keywords": [
     "qaninja",
@@ -25,6 +28,9 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "chai": "4.2.0",
+    "chai-http": "4.3.0",
+    "mocha": "6.2.0",
     "nodemon": "^1.19.1"
   }
 }
