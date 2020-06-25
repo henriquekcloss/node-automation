@@ -18,34 +18,27 @@ describe('put', () => {
             done: false
         }
 
-        before((done) => {
-            tasksModel.insertMany([task])
-            done();
+        before(async () => {
+            await tasksModel.insertMany([task])
         })
 
-        it('Então deve retornar 200', (done) => {
+        it('Então deve retornar 200', async () => {
             task.title = 'Comprar vinho';
             task.done = true;
 
-            request
+            const res = await request
                 .put('/task/' + task._id)
                 .send(task)
-                .end((err, res) => {
                     expect(res).to.has.status(200);
                     expect(res.body).to.eql({});
-                    done();
-                })
         })
 
-        it('E deve retornar os dados atualizados', (done) => {
-            request
+        it('E deve retornar os dados atualizados', async () => {
+            const res = await request
                 .get('/task/' + task._id)
-                .end((err, res) => {
                     expect(res).to.has.status(200);
                     expect(res.body.data.title).to.equal(task.title);
                     expect(res.body.data.done).to.equal(task.done);
-                    done();
-                })
         })
     })
 })

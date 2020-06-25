@@ -18,45 +18,33 @@ describe('delete', () => {
             done: false
         }
 
-        before((done) => {
-            tasksModel.insertMany([task])
-            done();
-        })
+        before(async () => {
+            await tasksModel.insertMany([task]);
+        });
 
-        it('Deve retornar 200', (done) => {
-            request
+        it('Deve retornar 200', async () => {
+            const res = await request
                 .delete('/task/' + task._id)
-                .end((err, res) => {
                     expect(res).to.has.status(200);
                     expect(res.body).to.eql({});
-                    done();
                 })
 
-            after((done) => {
-                request
+            after(async () => {
+                const res = await request
                     .get('/task/' + task._id)
-                    .end((err, res) => {
                         expect(res).to.has.status(404);
                         expect(res.body).to.eql({});
-                        done();
-                    })
             })
         })
-
-    })
 
     context('Quando a tarefa não existe', () => {
         let id = require('mongoose').Types.ObjectId();
 
-        it('Deve retornar 404', (done) => {
-            request
+        it('Deve retornar 404', async () => {
+            const res = await request
                 .delete('/task/' + id)
-                .end((err, res) => {
                     expect(res).to.has.status(404);
                     expect(res.body).to.eql({});
-                    done();
-                })
         })
-
     })
 })
