@@ -46,15 +46,13 @@ describe('get', () => {
                 { title: 'Ler um livro de Javascript', owner: 'eu@henrique.io', done: false },
             ]
 
-            await tasksModel.insertMany(tasks, (err, result) => {
-                let id = result[0]._id
-                request
+            const task = await tasksModel.insertMany(tasks)
+                let id = task[0]._id
+                
+                const res = await request
                     .get('/task/' + id)
-                    .end((err, res) => {
                         expect(res).to.has.status(200);
-                        expect(res.body.data.title).to.equal(tasks[0].title);
-                    })
-            });           
+                        expect(res.body.data.title).to.equal(task[0].title);        
         })
     })
 
