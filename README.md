@@ -1,9 +1,7 @@
 
 # Sobre o Código
 
-Esse código foi utilizado para a criação do curso [Automação Full Stack](http://qaninja.io/) da QA Ninja.
-
-A QA Ninja é uma escola online que conta com um time de Ninjas de altíssimo nível pra oferecer o melhor conteúdo sempre focando em Tecnologias Relevantes. Ministramos treinamentos com foco na mudança do modelo mental do profissional de TI. 
+Código da API retirado do curso [Automação Full Stack](http://qaninja.io/) da QA Ninja e código dos testes realizado pelo aluno.
 
 # Guia de Uso
 
