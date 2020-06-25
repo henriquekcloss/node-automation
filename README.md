@@ -1,7 +1,7 @@
 
 # Sobre o Código
 
-Código da API retirado do curso [Automação Full Stack](http://qaninja.io/) da QA Ninja.
+Código da API retirado do curso [Automação Full Stack](http://qaninja.io/) da QA Ninja e código dos testes realizado pelo aluno.
 
 # Guia de Uso
 
